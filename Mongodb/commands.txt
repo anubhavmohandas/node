@@ -1,0 +1,23 @@
+//to show all databases
+show dbs
+
+to go inside DB
+use databasename as use novintern
+
+see all the collection or tables
+show collections
+
+to find all data 
+db.collectionname.find()
+db.collectionname.find().pretty()
+
+to create new databasename
+use databasename 
+
+/* database will only create when it has a collection, and collection will only be created when it has a data. */
+
+to insert a record 
+db.user.insert({_id:1, name:'json'})
+--> verify by:
+use novintern 
+show dbs

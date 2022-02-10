@@ -1,0 +1,4 @@
+_id is the default primary key 
+every record in mongodb will have _id
+_id is unique and cant be duplicated
+object id is default _id if we dont specify some.
