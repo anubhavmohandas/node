@@ -2,3 +2,10 @@ _id is the default primary key
 every record in mongodb will have _id
 _id is unique and cant be duplicated
 object id is default _id if we dont specify some.
+
+
+let port = process.env.PORT || 8210
+as a developer, we only have the access of dev environment
+same as environment variables in windows.
+OR 
+if environment port number is given, it will work through it and if it is not defined then, port will be work on default 8210
