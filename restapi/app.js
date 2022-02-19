@@ -23,6 +23,15 @@ app.get('/location',(req,res) => {
     })
 })
 
+/*app.get('/restaurantmenu',(req,res) => {
+    db.collection('restaurantmenu').find().toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})*/
+
+
+/*Restaurants as per Location */
 app.get('/restaurantmenu',(req,res) => {
     db.collection('restaurantmenu').find().toArray((err, result) =>{
         if(err) throw err;
