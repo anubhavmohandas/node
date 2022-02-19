@@ -46,6 +46,8 @@ app.get('/restaurantdata',(req,res) => {
     })
 })
 
+
+
 MongoClient.connect(mongoUrl, (err, connection) => {
     if(err) console.log('Error While Connecting');
     db = connection.db('novintern')

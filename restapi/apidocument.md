@@ -10,6 +10,8 @@ restaurant with respect to city
 >    Local - http://localhost:6700/restaurantdata?state_id=3
 >    Live - 
 Quick Search Data
+>    Local - 
+>    Live -
 
 Page 2: Restaurant with respect to Quick Search
 
