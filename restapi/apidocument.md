@@ -1,10 +1,15 @@
 Page 1: 
 List of City 
+>    Local - http://localhost:6700/location
+>    Live - 
+
 List of Restaurant
-Hotels with respect to city
+>    Local - http://localhost:6700/restaurantdata
+>    Live - 
+restaurant with respect to city
+>    Local - http://localhost:6700/restaurantdata?state_id=3
+>    Live - 
 Quick Search Data
-Local - http://localhost:6700/location
-Live - 
 
 Page 2: Restaurant with respect to Quick Search
 

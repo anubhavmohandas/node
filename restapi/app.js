@@ -32,8 +32,15 @@ app.get('/location',(req,res) => {
 
 
 /*Restaurants as per Location */
-app.get('/restaurantmenu',(req,res) => {
-    db.collection('restaurantmenu').find().toArray((err, result) =>{
+app.get('/restaurantdata',(req,res) => {
+    let StateId = Number(req.query.state_id)
+    let query = {};
+    if (StateId){
+        query = {state_id:StateId};
+    }
+
+    console.log(">>>>restID" ,StateId)
+    db.collection('restaurantdata').find(query).toArray((err, result) =>{
         if(err) throw err;
         res.send(result)
     })

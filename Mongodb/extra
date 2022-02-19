@@ -30,3 +30,38 @@ two types to set a route
 > db.restaurant.find({}, {name:1,cost:1}).pretty() - if there is no condition and we need name and cost only. (But here, id will also be present)
 > db.restaurant.find({}, {name:1,cost:,_id:0}).pretty() - for removing id
 > db.restaurant.find({city:"1"}, {name:1,cost:,_id:0}).pretty() - for removing id
+
+
+
+app.get('/restaurantdata/:id',(req,res) => {
+    let restID = req.params.id;
+
+app.get('/restaurantdata/:abcd',(req,res) => {
+    let restID = req.params.abcd;
+
+
+PARAM: - 
+app.get('/restaurantdata/:id',(req,res) => {
+    let restID = Number(req.params.id)
+    console.log(">>>>restID" ,restID)
+    db.collection('restaurantdata').find({state_id:restID}).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+
+Query PARAM: - 
+app.get('/restaurantdata',(req,res) => {
+    let StateId = Number(req.query.state_id)
+    let query = {};
+    if (StateId){
+        query = {state_id:StateId};
+    }
+
+    console.log(">>>>restID" ,StateId)
+    db.collection('restaurantdata').find(query).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
