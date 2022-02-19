@@ -21,3 +21,8 @@ db.user.insert({_id:1, name:'json'})
 --> verify by:
 use novintern 
 show dbs
+
+
+
+
+//Node

@@ -34,9 +34,16 @@ app.get('/location',(req,res) => {
 /*Restaurants as per Location */
 app.get('/restaurantdata',(req,res) => {
     let StateId = Number(req.query.state_id)
+    let mealId = Number(req.query.meal_id)
     let query = {};
-    if (StateId){
+    if (StateId && mealId){
+        query = {"mealTypes.mealtype_id":mealId,state_id:StateId};
+    }
+    else if (StateId){
         query = {state_id:StateId};
+    }
+    else if (mealId){
+        query = {"mealTypes.mealtype_id":mealId};
     }
 
     console.log(">>>>restID" ,StateId)
@@ -46,7 +53,13 @@ app.get('/restaurantdata',(req,res) => {
     })
 })
 
-
+/* Get mealtype */
+app.get('/mealtype',(req,res) => {
+    db.collection('mealtype').find().toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
 
 MongoClient.connect(mongoUrl, (err, connection) => {
     if(err) console.log('Error While Connecting');

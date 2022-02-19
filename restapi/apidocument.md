@@ -1,4 +1,4 @@
-Page 1: 
+***Page 1 ***
 List of City 
 >    Local - http://localhost:6700/location
 >    Live - 
@@ -9,11 +9,17 @@ List of Restaurant
 restaurant with respect to city
 >    Local - http://localhost:6700/restaurantdata?state_id=3
 >    Live - 
-Quick Search Data
->    Local - 
+Quick Search Data (mealtype)
+>    Local - http://localhost:6700/mealtype
 >    Live -
 
-Page 2: Restaurant with respect to Quick Search
+
+***Page 2 ***
+Restaurant with respect to state and mealtype
+> Local: - http://localhost:6700/restaurantdata?state_id=4&meal_id=5
+
+Restaurant with respect to Quick Search
+> Local - http://localhost:6700/restaurantdata?meal_id=5
 
 filter data: - 
 > cuisine filter (data with respect to cuisine and quick search
