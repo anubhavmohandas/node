@@ -22,7 +22,7 @@ Restaurant with respect to Quick Search
 > Local - http://localhost:6700/restaurantdata?meal_id=5
 
 filter data: - 
-> cuisine filter (data with respect to cuisine and quick search
+> cuisine filter (data with respect to cuisine and quick search)
 > cost filter
 > data respect to cuisine and cost cuisine filter + cost filter
 > sort sort low to high in same quickSearch
@@ -30,8 +30,12 @@ filter data: -
 > Paginations
 
 Page 3: -
-> restaurants details
-> Menu of that restaurants 
+restaurants details
+> Local - http://localhost:6700/details/3
+> Live - 
+
+Menu of that restaurants 
+> Local - http://localhost:6700/menu/1
 
 page 4 : -
 > menu items on user selection

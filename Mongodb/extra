@@ -65,3 +65,18 @@ app.get('/restaurantdata',(req,res) => {
         res.send(result)
     })
 })
+
+
+
+For Page 3: - 
+We can use as Param, (becoz there id will be a little necessary)
+
+/* Restaurant details (IN REFERENCE OF OBJECT ID)*/
+app.get('/details/:id',(req,res) => {
+    //let restID = Number(req.params.id)
+    restID = mongo.ObjectId(req.params.id)
+    db.collection('restaurantdata').find({_id:restID}).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})

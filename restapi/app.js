@@ -53,6 +53,7 @@ app.get('/restaurantdata',(req,res) => {
     })
 })
 
+
 /* Get mealtype */
 app.get('/mealtype',(req,res) => {
     db.collection('mealtype').find().toArray((err, result) =>{
@@ -60,6 +61,29 @@ app.get('/mealtype',(req,res) => {
         res.send(result)
     })
 })
+
+/*Restaurant details*/
+app.get('/details/:id',(req,res) => {
+    let restID = Number(req.params.id)
+    //restID = mongo.ObjectId(req.params.id)
+    db.collection('restaurantdata').find({restaurant_id:restID}).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+/*Menu with respect to details*/
+app.get('/menu/:id',(req,res) => {
+    let restID = Number(req.params.id)
+    db.collection('restaurantmenu').find({restaurant_id:restID}).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+/*Menu on basis of USER SELCETION */
+
+
 
 MongoClient.connect(mongoUrl, (err, connection) => {
     if(err) console.log('Error While Connecting');
