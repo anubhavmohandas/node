@@ -26,3 +26,5 @@ show dbs
 
 
 //Node
+npm i express
+npm i express, mongodb

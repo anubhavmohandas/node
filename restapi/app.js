@@ -17,7 +17,7 @@ app.use(cors())
 
 /*Get Request */
 app.get('/',(req,res) => {
-    res.send("Welcome to express")
+    res.send("Welcome")
 })
 
 
@@ -49,7 +49,7 @@ app.get('/restaurantdata',(req,res) => {
         query = {state_id:StateId};
     }
     else if (mealId){
-        query = {"mealTypes.mealtype_id":mealId};
+        query = {"mealTypes.mealtype_id":mealId}
     }
 
     console.log(">>>>restID" ,StateId)
@@ -65,7 +65,7 @@ app.get('/filter/:mealId',(req,res) => {
     let mealId = Number(req.params.mealId)
     let skip = 0
     let limit = 1000000000;
-    let cuisineId = Number(req.query.cuisine)
+    let cuisineId = Number(req.query.cuisine_id)
     let lcost = Number(req.query.lcost);
     let hcost = Number(req.query.hcost)
     let query = {}
@@ -98,19 +98,20 @@ app.get('/filter/:mealId',(req,res) => {
 
 
 
-/* Get mealtype */
-app.get('/mealtype',(req,res) => {
-    db.collection('mealtype').find().toArray((err, result) =>{
+
+
+/*Restaurant details*/
+app.get('/details/:id',(req,res) => {
+    let restID = Number(req.params.id)
+    db.collection('restaurantdata').find({restaurant_id:restID}).toArray((err, result) =>{
         if(err) throw err;
         res.send(result)
     })
 })
 
-/*Restaurant details*/
-app.get('/details/:id',(req,res) => {
-    let restID = Number(req.params.id)
-    //restID = mongo.ObjectId(req.params.id)
-    db.collection('restaurantdata').find({restaurant_id:restID}).toArray((err, result) =>{
+/* Get mealtype */
+app.get('/mealtype',(req,res) => {
+    db.collection('mealtype').find().toArray((err, result) =>{
         if(err) throw err;
         res.send(result)
     })
@@ -157,6 +158,7 @@ app.post('/menuItem', (req, res) => {
         res.send(result)
     })
 })
+
 
 /* Delete Orders */
 app.delete('/deleteOrder', (req, res) => {
