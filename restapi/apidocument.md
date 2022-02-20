@@ -56,7 +56,11 @@ Menu of that restaurants
 > Live - 
 
 page 4 : -
-> menu items on user selection
+menu items on user selection
+> Local - localhost:6700/menuItem 
+        [4,5,7]
+
+
 api to place order
 > Local - localhost:6700/placeOrder
 > Live - 
@@ -65,6 +69,7 @@ Delete order
 > Local - localhost:6700/deleteOrder
 
 update order
+> Local - localhost:6700/updateOrder/621228313aa7a46d5cf5c7ba?status=success
 
 
 page 5 : -
