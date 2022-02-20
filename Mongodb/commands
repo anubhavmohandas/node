@@ -26,5 +26,6 @@ show dbs
 
 
 //Node
+npm init
 npm i express
-npm i express, mongodb
+npm i bcryptjs body-parser cors express jsonwebtoken mongoose
