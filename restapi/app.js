@@ -53,6 +53,44 @@ app.get('/restaurantdata',(req,res) => {
     })
 })
 
+/* Filters*/
+app.get('/filter/:mealId',(req,res) => {
+    let sort = {cost:1}
+    let mealId = Number(req.params.mealId)
+    let skip = 0
+    let limit = 1000000000;
+    let cuisineId = Number(req.query.cuisine)
+    let lcost = Number(req.query.lcost);
+    let hcost = Number(req.query.hcost)
+    let query = {}
+    if(req.query.sort){
+        sort = {cost:req.query.sort}
+    }
+    if(req.query.skip && req.query.limit){
+        skip = Number(req.query.skip);
+        limit = Number(req.query.limit)
+    }
+
+    if(cuisineId&lcost&hcost) {
+        query = {"cuisines.cuisine_id":cuisineId, "mealTypes.mealtype_id":mealId, $and:[{cost:{$gt:lcost, $lt:hcost}}]
+    }
+}
+
+    else if(cuisineId){
+        query = {"cuisines.cuisine_id":cuisineId,"mealTypes.mealtype_id":mealId}
+    }
+
+    else if(lcost&hcost){
+        query = {$and:[{cost:{$gt:lcost, $lt:hcost}}],"mealTypes.mealtype_id":mealId}
+    }
+
+    db.collection('restaurantdata').find(query).sort(sort).skip(skip).limit(limit).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+
 
 /* Get mealtype */
 app.get('/mealtype',(req,res) => {
