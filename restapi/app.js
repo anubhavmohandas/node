@@ -6,8 +6,14 @@ const MongoClient = mongo.MongoClient;
 const mongoUrl = "mongodb+srv://test:test123@cluster0.p7mvq.mongodb.net/novintern?retryWrites=true&w=majority"
 const dotenv = require('dotenv');
 dotenv.config()
+const bodyParser = require('body-parser')
+const cors = require('cors')
 let port = process.env.PORT || 8210;
 var db;
+
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
+app.use(cors())
 
 /*Get Request */
 app.get('/',(req,res) => {
@@ -121,7 +127,44 @@ app.get('/menu/:id',(req,res) => {
 
 /*Menu on basis of USER SELCETION */
 
+//Get all Orders 
+app.get('/orders',(req,res) => {
+    let email = req.query.email
+    let query = {};
+    if (email){
+        query = {"email":email};
+    }
 
+    db.collection('order').find(query).toArray((err, result) =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
+
+/* Place Order */
+app.post('/placeOrder', (req, res) => {
+    //console.log(req.body)
+    db.collection('order').insert(req.body, (err, result) =>{
+        if(err) throw err;
+        res.send('Order Added Successfully')
+    })
+})
+
+app.post('/menuItem', (req, res) => {
+    console.log(req.body)
+    // db.collection('order').insert(req.body, (err, result) =>{
+    //     if(err) throw err;
+    //     res.send('Order Added Successfully')
+    // })
+})
+
+/* Delete Orders */
+app.delete('/deleteOrder', (req, res) => {
+    db.collection('order').remove({}, (err, result)  =>{
+        if(err) throw err;
+        res.send(result)
+    })
+})
 
 MongoClient.connect(mongoUrl, (err, connection) => {
     if(err) console.log('Error While Connecting');

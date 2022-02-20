@@ -21,7 +21,7 @@ Restaurant with respect to state and mealtype
 Restaurant with respect to Quick Search
 > Local - http://localhost:6700/restaurantdata?meal_id=5
 
-filter data: - 
+/// filter data: - ///
 cuisine filter (data with respect to cuisine and quick search)
 > Local - http://localhost:6700/filter/1?cuisine=2
 > Live - 
@@ -57,11 +57,18 @@ Menu of that restaurants
 
 page 4 : -
 > menu items on user selection
-> api to place order
-
-page 5 : -
-> list all order 
+api to place order
+> Local - localhost:6700/placeOrder
+> Live - 
 
 Delete order
+> Local - localhost:6700/deleteOrder
 
 update order
+
+
+page 5 : -
+list all order 
+> Local - http://localhost:6700/orders?email=a@gmail.com or http://localhost:6700/orders
+
+
